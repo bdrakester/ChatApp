@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Lobby
+{% endblock %}
+
+{% block body %}
+  <p>Hello {{ username }}</p>
+
+  <figure>
+    <figcaption>Available Rooms</figcaption>
+    <ul>
+      {% for chatroom in chatrooms %}
+        <li>
+          <a href="{{ url_for('chatroom', chatroom_name = chatroom) }}">{{ chatroom }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </figure>
+
+  <div>
+     <form action="{{ url_for('lobby') }}" method="POST">
+       <input name="chatroom" autocomplete="off" placehoder="New Chatroom" type="text">
+       <input type="submit" value="Create">
+     </form>
+  </div>
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='js/chatroom.js') }}"></script>
+
+{% endblock %}
+
+{% block heading %}
+    {{ name }}
+{% endblock %}
+
+{% block body %}
+<ul id="messages">
+  {% for msg in messages %}
+    <li>{{ msg.time }} {{ msg.username }} : {{msg.text}}</li>
+  {% endfor %}
+</ul>
+<hr>
+<div>
+  <input type="text" id="message" autocomplete="off" placehoder="Type a Message...">
+  <button id="send" data-room="{{ name }}">Send</button>
+</div>
+
+{% endblock %}
