@@ -23,8 +23,3 @@ CREATE TABLE messages (
   user_id INTEGER REFERENCES users,
   sent_time TIMESTAMP
 )
-
-SELECT sent_time, username, message
-FROM messages JOIN users
-ON users.id = messages.user_id
-WHERE messages.chatroom_id = ?? ORDER BY sent_time LIMIT 4
